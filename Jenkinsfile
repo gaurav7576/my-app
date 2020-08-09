@@ -37,7 +37,7 @@ pipeline
 				steps
 				{
 					echo "build in master branch - 2"
-					sh "mvn install"
+					bat "mvn install"
 				}
 			}
 			stage ('Unit Testing')
@@ -45,7 +45,7 @@ pipeline
 				steps
 				{
 					echo "build in master branch - 3"
-					sh "mvn test"
+					bat "mvn test"
 				}
 			}
 			stage ('Sonar Analysis')
@@ -55,7 +55,7 @@ pipeline
 					echo "build in master branch - 4"
 					withSonarQubeEnv("SonarToken")
 					{
-						sh "mvn sonar:sonar"
+						bat "mvn sonar:sonar"
 					}
 				}
 			}
