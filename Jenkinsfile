@@ -67,8 +67,8 @@ pipeline
 					rtMavenDeployer (
 						id: 'deployer',
 						serverId: 'myapp@123',
-						releaseRepo: 'CI-Automation-JAVA',
-						snapshotRepo: 'CI-Automation-JAVA'
+						releaseRepo: 'myapp-repository-test',
+						snapshotRepo: 'myapp-repository-test'
 					)
 					rtMavenRun (
 						pom: 'pom.xml',
