@@ -100,10 +100,10 @@ pipeline
 				{
 					param (
 						[Parameter(ParameterSetName='container')]
-						[string]$ContainerID = $(docker ps | grep 7000 | cut -d " " -f 1)
+						[string]$cID = $(docker ps | grep 7000 | cut -d " " -f 1)
 					)
-					if ($ContainerID) {
-						docker stop $ContainerID && docker rm -f $ContainerID
+					if ($cID) {
+						docker stop $cID && docker rm -f $cID
 					}
 				}
 			}
