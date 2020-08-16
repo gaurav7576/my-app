@@ -80,5 +80,41 @@ pipeline
 					)
 				}
 			}
+			stage ('Docker Image')
+			{
+				steps
+				{
+					bat '/bin/docker build -t dtr.nagarro.com:443/myapp:${BUILD_NUMBER} --no-cache -f DockerFile .'
+				}
+			}
+			stage ('Push to DTR')
+			{
+				steps
+				{
+					bat '/bin/docker push dtr.nagarro.com:443/myapp:${BUILD_NUMBER}'
+				}
+			}
+			stage ('Stop Running Container')
+			{
+				steps
+				{
+					bat ...
+						ContainerID=$(docker ps | grep 7000 | cut -d " " -f 1)
+						if [$ContainerID]
+						then
+							docker stop $ContainerID
+							docker rm -f $ContainerID
+						fi
+					...
+				}
+			}
+			
+			stage ('Docker Deployment')
+			{
+				steps
+				{
+					bat 'docker run --name myapphelloworldapp -d -p 7000:8090 dtr.nagarro.com:443/myapp:${BUILD_NUMBER}'
+				}
+			}
 		}
 }
