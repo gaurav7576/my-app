@@ -98,6 +98,8 @@ pipeline
 			{
 				steps
 				{
+					[cmdletbinding(DefaultParameterSetName='container')]
+
 					param (
 						[Parameter(ParameterSetName='container')]
 						[string]$cID = $(docker ps | grep 7000 | cut -d " " -f 1)
