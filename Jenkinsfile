@@ -99,6 +99,7 @@ pipeline
 				steps
 				{
 					param (
+						[Parameter(ParameterSetName='container')]
 						[string]$ContainerID = $(docker ps | grep 7000 | cut -d " " -f 1)
 					)
 					if ($ContainerID) {
