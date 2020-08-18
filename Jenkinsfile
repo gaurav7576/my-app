@@ -94,22 +94,6 @@ pipeline
 					bat '/bin/docker push dtr.nagarro.com:443/myapp:${BUILD_NUMBER}'
 				}
 			}
-			stage ('Stop Running Container')
-			{
-				steps
-				{
-					[cmdletbinding(DefaultParameterSetName='container')]
-
-					param (
-						[Parameter(ParameterSetName='container')]
-[string]$cID = $(docker ps | grep 7000 | cut -d " " -f 1)
-					)
-					if ($cID) {
-						docker stop $cID && docker rm -f $cID
-					}
-				}
-			}
-			
 			stage ('Docker Deployment')
 			{
 				steps
