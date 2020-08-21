@@ -1,5 +1,5 @@
 FROM tomcat:alpine
 MAINTAINER Gaurav Kumar
-RUN wget -O /usr/local/tomcat/webapps/launchstation04.war http://192.168.0.13:8082/artifactory/myapp-repository-test/com/mycompany/app/my-app/1.0-SNAPSHOT/my-app-1.0-20200810.115916-1.war
+RUN wget --user admin --password password@123 /usr/local/tomcat/webapps/launchstation04.war http://192.168.0.13:8082/artifactory/myapp-repository-test/com/mycompany/app/my-app/1.0-SNAPSHOT/my-app-1.0-20200821.181326-13.war
 EXPOSE 8090
 CMD /usr/local/tomcat/bin/catalina.sh run
