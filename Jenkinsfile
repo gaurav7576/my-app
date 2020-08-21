@@ -84,7 +84,7 @@ pipeline
 			{
 				steps
 				{
-					bat 'docker build -t gaurav7576/myapp:${BUILD_NUMBER} .'
+					bat 'docker build --tag gaurav7576/myapp:${BUILD_NUMBER} .'
 				}
 			}
 			stage ('Push to DTR')
