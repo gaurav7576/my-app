@@ -84,7 +84,7 @@ pipeline
 			{
 				steps
 				{
-					bat 'docker build --tag gaurav7576/myapp:${BUILD_NUMBER} --no-cache -f DockerFile .'
+					bat 'docker build -t gaurav7576/myapp:${BUILD_NUMBER} --no-cache -f DockerFile .'
 				}
 			}
 			stage ('Push to DTR')
