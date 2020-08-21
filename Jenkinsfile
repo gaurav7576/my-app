@@ -84,7 +84,7 @@ pipeline
 			{
 				steps
 				{
-					bat 'docker build --tag gaurav7576/myapp:${BUILD_NUMBER} .'
+					bat 'docker build --tag gaurav7576/myapp:${BUILD_NUMBER} --no-cache -f DockerFile .'
 				}
 			}
 			stage ('Push to DTR')
@@ -98,7 +98,7 @@ pipeline
 			{
 				steps
 				{
-					bat 'docker run --name myapphelloworldapp -d -p 7000:8090 dtr.nagarro.com:443/myapp:${BUILD_NUMBER}'
+					bat 'docker run --name myapphelloworldapp -d -p 7000:8090 gaurav7576:443/myapp:${BUILD_NUMBER}'
 				}
 			}
 		}
