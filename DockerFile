@@ -1,6 +1,6 @@
 FROM java:8-jdk-alpine
 MAINTAINER Gaurav Kumar
-ADD wget -O http://host.docker.internal:8082/artifactory/myapp-repository-test/com/mycompany/app/my-app/1.0-SNAPSHOT/my-app-1.0-20200825.083423-21.war /usr/app/
+ADD /usr/app/ http://host.docker.internal:8082/artifactory/myapp-repository-test/com/mycompany/app/my-app/1.0-SNAPSHOT/my-app-1.0-20200825.083423-21.war
 WORKDIR /usr/app
 EXPOSE 8086
 ENTRYPOINT ["java", "-jar", "my-app-1.0-20200825.083423-21.war"]
