@@ -97,7 +97,7 @@ pipeline
 			{
 				steps
 				{
-					bat 'docker run --name myapphelloworldapp -d -p 7000:8090 gaurav7576/myapp:${BUILD_NUMBER}'
+					bat 'docker run --name myapphelloworldapp -d -p 7000:8086 gaurav7576/myapp:${BUILD_NUMBER}'
 				}
 			}
 		}
