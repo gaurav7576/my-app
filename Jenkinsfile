@@ -80,11 +80,10 @@ pipeline
 					)
 				}
 			}
-			stage ('Docker Image')
-			{
-				steps
-				{
-					bat 'docker build --tag gaurav7576/myapp:${BUILD_NUMBER} .'
+			stage('Docker Image'){
+				steps{
+					echo "Test: $Build_NUMBER"
+					bat "docker build -t gaurav7576/myapp:$Build_NUMBER --no-cache -f Dockerfile ."
 				}
 			}
 			stage ('Push to DTR')

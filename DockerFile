@@ -1,3 +1,6 @@
-FROM tomcat:8
+FROM java:8-jdk-alpine
 MAINTAINER Gaurav Kumar
-COPY target/*.war /usr/local/tomcat/webapps
+RUN wget -O /usr/local/tomcat/webapps/launchstation04.war http://192.168.0.13:8082/artifactory/myapp-repository-test/com/mycompany/app/my-app/1.0-SNAPSHOT/my-app-1.0-20200810.115916-1.jar 
+WORKDIR /usr/app
+EXPOSE 8086
+ENTRYPOINT ["java", "-jar", "my-app-1.0-20200810.115916-1.jar "]
