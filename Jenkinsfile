@@ -90,6 +90,7 @@ pipeline
 			{
 				steps
 				{
+					bat "docker login -u gaurav7576 -p Ruchi@123"
 					bat 'docker push gaurav7576/myapp:${BUILD_NUMBER}'
 				}
 			}
