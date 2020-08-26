@@ -91,14 +91,14 @@ pipeline
 				steps
 				{
 					bat "docker login -u gaurav7576 -p Ruchi@123"
-					bat 'docker push gaurav7576/myapp:${BUILD_NUMBER}'
+					bat "docker push gaurav7576/myapp:$Build_NUMBER"
 				}
 			}
 			stage ('Docker Deployment')
 			{
 				steps
 				{
-					bat 'docker run --name myapphelloworldapp -d -p 7000:8086 gaurav7576/myapp:${BUILD_NUMBER}'
+					bat 'docker run --name myapphelloworldapp -d -p 7000:8086 gaurav7576/myapp:$BUILD_NUMBER'
 				}
 			}
 		}
