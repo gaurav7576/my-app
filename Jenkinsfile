@@ -94,11 +94,23 @@ pipeline
 					bat "docker push gaurav7576/myapp:$Build_NUMBER"
 				}
 			}
+			stage('Stop running container'){
+				steps{
+					script{
+						conatiner = false
+						container = bat(script: "@docker ps -aqf name=myapphelloworldapp", returnStdout: true).trim();
+						if ("$container"){
+							bat "docker stop $container"
+							bat "docker rm -f $container"
+						}
+					}
+				}
+			}
 			stage ('Docker Deployment')
 			{
 				steps
 				{
-					bat 'docker run --name myapphelloworldapp -d -p 7000:8086 gaurav7576/myapp:$BUILD_NUMBER'
+					bat "docker run --name myapphelloworldapp -d -p 7000:8080 gaurav7576/myapp:$BUILD_NUMBER"
 				}
 			}
 		}
