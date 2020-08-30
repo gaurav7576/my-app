@@ -3,7 +3,7 @@ pipeline
 	agent any
 		tools
 		{
-			maven 'Maven 3'
+			maven 'Maven3'
 		}
 		options
 		{
