@@ -3,7 +3,7 @@ pipeline
 	agent any
 		tools
 		{
-			maven 'Maven3'
+			maven 'Maven 3'
 		}
 		options
 		{
@@ -53,7 +53,7 @@ pipeline
 				steps
 				{
 					echo "build in master branch - 4"
-					withSonarQubeEnv("SonarToken")
+					withSonarQubeEnv("Test_Sonar")
 					{
 						bat "mvn sonar:sonar"
 					}
@@ -66,7 +66,7 @@ pipeline
 					echo "build in master branch - 5"
 					rtMavenDeployer (
 						id: 'deployer',
-						serverId: 'myapp@123',
+						serverId: '123456789@artifactory',
 						releaseRepo: 'myapp-repository-test',
 						snapshotRepo: 'myapp-repository-test'
 					)
@@ -76,7 +76,7 @@ pipeline
 						deployerId: 'deployer'
 					)
 					rtPublishBuildInfo (
-						serverId: 'myapp@123'
+						serverId: '123456789@artifactory'
 					)
 				}
 			}
